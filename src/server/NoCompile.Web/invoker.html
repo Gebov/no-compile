@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoker</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#submitButton").click(function () {
+
+                var typeName = $("#typeName").val();
+                var methodName = $("#methodName").val();
+                var filePath = $("#filePath").val();
+                var keyPath = $("#keyPath").val();
+                var asmName = $("#asmName").val();
+
+                var data = {
+                    options: {
+                        TypeName: typeName,
+                        MethodName: methodName,
+                        FilePath: filePath,
+                        KeyPath: keyPath,
+                        AsmName: asmName
+                    }
+                };
+
+                $.ajax({
+                    method: "POST",
+                    url: "http://localhost:8080/invoker/api/v1/invoke-json",
+                    data: JSON.stringify(data),
+                    contentType: "application/json",
+                    success: function() {
+                        $('#errorContent').hide();
+                    },
+                    error: function (jqHhr) {
+                        var htmlNodes = $.parseHTML(jqHhr.responseText);
+
+                        for (var i = 0; i < htmlNodes.length; i++) {
+                            var current = htmlNodes[i];
+                            if (current.id == 'content') {
+                                $('#errorContent').empty();
+                                $('#errorContent').append(current);
+                                $('#errorContent').show();
+                                break;
+                            }
+                        }
+                    }
+                })
+            });
+        });
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td><label for="typeName">Type Name</label></td>
+            <td><input id="typeName" type="text" name="typeName" size="100" /></td>
+        </tr>
+        <tr>
+            <td><label for="methodName">Method Name</label></td>
+            <td><input id="methodName" type="text" name="methodName" size="100" /></td>
+        </tr>
+        <tr>
+            <td><label for="filePath">File path</label></td>
+            <td><input id="filePath" type="text" name="filePath" size="100" /></td>
+        </tr>
+        <tr>
+            <td><label for="keyPath">Sign key path</label></td>
+            <td><input id="keyPath" type="text" name="keyPath" size="100" /></td>
+        </tr>
+        <tr>
+            <td><label for="asmName">Assembly name</label></td>
+            <td><input id="asmName" type="text" name="asmName" value="DynamicLib" size="100" /></td>
+        </tr>
+        <tr>
+            <td>
+                <input id="submitButton" type="button" value="Invoke" />
+            </td>
+        </tr>
+    </table>
+
+    <div id="errorContent">
+
+    </div>
+</body>
+</html>

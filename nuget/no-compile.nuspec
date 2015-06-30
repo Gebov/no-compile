@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>NoCompile</id>
+    <version>0.1.0.2</version>
+    <authors>gebov</authors>
+    <owners>gebov</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Compiles a file and invokes the method for the specified class.</description>
+    <copyright>Copyright 2015</copyright>
+    <tags>debug productivity dynamic method</tags>
+  </metadata>
+</package>
