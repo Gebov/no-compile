@@ -9,16 +9,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoCompile.Web", "NoCompile.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTest", "WebTest\WebTest.csproj", "{8381A6E6-68E1-432B-9896-271C0D88FD9B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{9A0C1CBD-55FA-4D5D-9335-83A733EC7E0E}"
-	ProjectSection(SolutionItems) = preProject
-		Global\GlobalAssemblyInfo.cs = Global\GlobalAssemblyInfo.cs
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5F15E6EF-0DA5-4821-A356-EEAE39E4F24A}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{32D2ED50-5879-4AB9-9F83-6CD9D487E0BD}"
+	ProjectSection(SolutionItems) = preProject
+		global\GlobalAssemblyInfo.cs = global\GlobalAssemblyInfo.cs
 	EndProjectSection
 EndProject
 Global
