@@ -1,5 +1,8 @@
 @echo off
 
+@if exist "%ProgramFiles%\MSBuild\12.0\bin" set PATH=%ProgramFiles%\MSBuild\12.0\bin;%PATH%
+@if exist "%ProgramFiles(x86)%\MSBuild\12.0\bin" set PATH=%ProgramFiles(x86)%\MSBuild\12.0\bin;%PATH%
+
 rem clean
 set "outputDir=%cd%\output"
 rd "%outputDir%" /q /s
@@ -16,4 +19,8 @@ rd %cd%\output\nuget\ /q /s
 rem -Version 2.1.0
 
 set "vsxOut=%outputDir%\vsx"
-rem msbuild src/vsx/NoCompile.Vsix.sln /t:Clean,Build /p:Configuration=Release,OutDir="%vsxOut%" /toolsversion:3.5
+msbuild src/vsx/NoCompile.Vsix.sln /t:Clean,Build /p:Configuration=Release,OutDir="%vsxOut%"
+
+copy %vsxOut%\NoCompile.Vsix.vsix %cd%\output\NoCompile.Vsix.vsix
+
+rd %vsxOut% /q /s
